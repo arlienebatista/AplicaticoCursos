@@ -28,6 +28,7 @@ function successDB() { }
 function createDB(tx) {
   tx.executeSql('CREATE TABLE IF NOT EXISTS Cursos(id INTEGER PRIMARY KEY, nome VARCHAR(50), valor NUM(15), vagas NUM(15))');
   tx.executeSql('CREATE TABLE IF NOT EXISTS vagas_preenchidas(id INTEGER PRIMARY KEY, nome VARCHAR(50), valor NUM(15), vagas NUM(15))');
+
 }
 
 
@@ -54,6 +55,7 @@ function cursos_insert_bd(tx) {
   var valor = $("#cursos_valor").val();
   var vagas = $("#cursos_vagas").val();
 
+
   if (nome == "") {
     alert("Prencha o curso!");
     return false;
@@ -63,16 +65,22 @@ function cursos_insert_bd(tx) {
     return false;
   }
 
-  if (nome != "" && valor != "") {
+  if (vagas == "") {
+    alert("Prencha a quantidade de vagas");
+    return false;
+  }
+
+  if (nome != "" && valor && vagas != "") {
     tx.executeSql('INSERT INTO Cursos (nome, valor, vagas) VALUES ("' + nome + '", ' + valor + ', ' + vagas + ')');
     cursos_view();
     $("#tela_padrao").show();
     $("#tela_inclusao").hide();
   }
 
-  alert('Produto Inserido');
+  alert('Curso cadastrado com sucesso!');
   $("#nome").val("");
   $("#valor").val("");
+  $("#vagas").val("");
 
 }
 

@@ -1,0 +1,139 @@
+<!-- Desenvolvedora: Arliene Batista-->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport"
+        content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width" />
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src * 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *" />
+    <link rel="stylesheet" type="text/css" href="css/index.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+    <title>Cursos Tecnológicos</title>
+</head>
+
+<body>
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/cursos.js"></script>
+
+    <img id="logo" src="img/logo.png" alt="" width="100" height="100">
+
+    <input type="hidden" id="cursos_id_insert">
+    <input type="hidden" id="curso_id_excluir">
+    <input type="hidden" id="curso_id">
+
+    <div class="container" id="tela_padrao">
+        <br>
+        <h2> CÓDIGO-FONTE </h2>
+        <h3> Cursos Tecnológicos</h3>
+        <div class="row">
+            <div class="col-md-12">
+                <br><br>
+                <input type="button" value="Cadastrar Cursos" class="btn btn-lg btn-primary form-control"
+                    onclick="cursos_abrir_tela_inclusao();">
+                <br><br>
+                <input type="button" value="Listar Cursos" class="btn btn-lg btn-primary form-control"
+                    onclick="cursos_abrir_tela_visualizar();">
+                <br><br>
+                <input type="button" value="Carrinho de Compras" class="btn btn-lg btn-primary form-control"
+                    onclick="cursos_abrir_tela_compras();">
+                <br><br>
+            </div>
+        </div>
+    </div>
+
+    <!-- tela de Inclusao-->
+    <div class="container" id="tela_inclusao" hidden>
+        <div class="row">
+            <div class="col-md-12">
+                <br>
+                <h3>Cadastro de Cursos</h3>
+                <br>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Curso: </h4>
+                <input type="text" class="form-control" id="cursos_nome">
+                <br>
+                <h4>Valor (R$): </h4>
+                <input type="number" class="form-control" id="cursos_valor">
+                <br>
+                <h4>Vagas: </h4>
+                <input type="number" class="form-control" id="cursos_vagas">
+                <br>
+                <input type="button" class="btn btn-lg btn-primary" value="Voltar" onclick="cursos_fechar_tela_inclusao()">
+                <input type="button" class="btn btn-lg btn-primary" value="Salvar" onclick="cursos_insert()">
+            </div>
+        </div>
+    </div>
+
+    <!-- tela dos cursos salvos-->
+    <div class="container" id="tela_visualizar" hidden>
+        <div class="row">
+            <div class="col-md-12">
+                <br>
+                
+                <h3>Cursos Disponíveis</h3>
+                <table class="table">
+                    <thead>
+                        <th>ID</th>
+                        <th>Curso</th>
+                        <th>Vagas</th>
+                        <th>Valor(R$)</th>
+                        <th></th>
+                    </thead>
+                    <tbody id="cursos_listagem">
+                    </tbody>
+                </table>
+                <div id="finalizar_compra" hidden>
+
+                    <h3>Quantidade de vagas que deseja: </h3>
+                    <input type="number" class="form-control" id="vagas_curso">
+                    <br>
+                    <input type="button" class="btn btn-primary" value="Finalizar" onclick="finalizar_compra()">
+                </div>
+                <br>
+                <input type="button" class="btn btn-lg btn-primary" value="Voltar"
+                    onclick="cursos_fechar_tela_visualizar()">
+                <br>
+            </div>
+            <script>
+                cursos_view();
+            </script>
+        </div>
+    </div>
+
+    <div class="container" id="cursos_tela_compras" hidden>
+        <div class="row">
+            <div class="col-md-12">
+                <br>
+                <h3>Compras Realizadas</h3>
+                <table class="table">
+                    <thead>
+                        <th>ID</th>
+                        <th>Curso</th>
+                        <th>Vagas</th>
+                        <th>Valor(R$)</th>
+                        <th></th>
+                    </thead>
+                    <tbody id="cursos_comprados_listagem">
+                    </tbody>
+                </table>
+                <br>
+                <input type="button" class="btn btn-lg btn-primary" value="Voltar" onclick="cursos_fechar_tela_compras()">
+            </div>
+            <script>
+                cursos_comprados_view();
+            </script>
+        </div>
+    </div>
+
+</body>
+
+</html>
